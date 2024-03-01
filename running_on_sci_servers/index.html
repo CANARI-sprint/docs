@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Jasmin notebook service - CANARI Sprint</title>
+        <title>Running on sci servers - CANARI Sprint</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -82,7 +82,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#configuring-and-using-the-jasmin-notebooks-service" class="nav-link">Configuring and Using the JASMIN Notebooks Service</a>
+            <li class="nav-item" data-level="2"><a href="#running-on-the-jasmin-sci-servers" class="nav-link">Running on the JASMIN Sci Servers</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -91,40 +91,58 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="configuring-and-using-the-jasmin-notebooks-service">Configuring and Using the JASMIN Notebooks Service</h2>
-<h3 id="logging-into-the-jasmin-notebook-service">Logging into the JASMIN Notebook Service</h3>
+<h2 id="running-on-the-jasmin-sci-servers">Running on the JASMIN Sci Servers</h2>
+<p>The JASMIN notebook service only has limited resources and might not be sufficient for some larger datasets. One alternative is to use the Sci servers. These are 8 shared servers which JASMIN users can login to and run code on.</p>
+<h3 id="logging-on-to-the-sci-servers">Logging on to the Sci servers</h3>
+<p>First login to the JASMIN login server (replace <jasminusername> with your own username):</p>
+<p><code>ssh -A &lt;jasminusername&gt;@login1.jasmin.ac.uk</code></p>
+<p>Do not forget to add the <code>-A</code> option to add your SSH key to the session.</p>
+<p>Then login to one of the sci servers, there are 8 of these in total called sci1-8.</p>
+<p><code>ssh sci6</code></p>
+<p>Or this can all be wrapped up in one command using an SSH "jump host" with:
+<code>ssh -J &lt;jasminusername&gt;@login1.jasmin.ac.uk &lt;jasminusername&gt;@sci6</code></p>
+<h3 id="anacionda-miniconda-or-micromamba">Anacionda, Miniconda or Micromamba?</h3>
+<p>Unlike the Notebook server neither Conda or Mamba are installed by default on the Sci servers and we must install them ourselves. There are three possible options:</p>
 <ol>
-<li>In your web browser visit <a href="https://notebooks.jasmin.ac.uk">https://notebooks.jasmin.ac.uk</a></li>
-<li>Login using your JASMIN username and password</li>
-<li>You will then be emailed a one time code, paste this into the verification code box.</li>
-<li>A Jupyter notebook interface will now be started and you can create a new notebook or open a terminal.</li>
+<li><a href="https://www.anaconda.com/download">Anaconda</a> - A heavyweight distribution with many popular packages pre-installed. This is about 1 gigabyte in size.</li>
+<li><a href="https://docs.anaconda.com/free/miniconda/index.html">Miniconda</a> - A lightweight dsitribution with only a few packages such as Python pre-installed. This is about 140 megabytes in size.</li>
+<li><a href="https://github.com/mamba-org/micromamba-releases">Micromamba</a> - The mamba package manager and nothing else, we can use this to install Python and any other packages we need. This is only 14 megabytes.</li>
 </ol>
-<p>Your JASMIN home directory and group workspaces will be accessible from within the notebook environment.</p>
-<h3 id="setting-up-the-canari-conda-environment">Setting up the CANARI Conda Environment</h3>
-<p>We have preconfigured a CANARI conda environment for you to use. This contains many (but perhaps not all) of the packages you are likely to need. It is built using the environment.yml file that can be found in the <a href="https://github.com/CANARI-sprint/tutorials/blob/main/environment.yml">CANARI tutorials github</a>. The environment is located on the Group Work Space under the path <code>/gws/smf/j04/canari/conda-env</code>, because it is held in a non-standard location your Jupyter notebooks won't find it automatically. In order to use it do the following:</p>
+<p>All of these provide us with the conda or mamba package manager and let us download more packages if needed. Since it is the smallest and simplest, we'll use micromamba for this example. Feel free to follow the links above and use Anaconda or Miniconda if you prefer. </p>
+<h3 id="installing-micromamba">Installing Micromamba</h3>
+<p>To download Micromamba run the following:
+<code>"${SHELL}" &lt;(curl -L https://micro.mamba.pm/install.sh)</code></p>
+<p>This will then ask several questions about configuring Micromamba:</p>
 <ul>
-<li>From the Jupyter launcher click on the terminal icon</li>
-<li>Type: <code>conda run -p /gws/smf/j04/canari/conda-env python -m ipykernel install --user --name CANARI</code> and press enter</li>
-<li>Open a new Jupyter launcher by clicking on File and then New Launcher</li>
-<li>There should now be a notebook and console option called CANARI, although this can take around one minute to appear.</li>
+<li>When prompted for a micromaba binary folder choose the default choice of ~/.local/bin by pressing enter.</li>
+<li>Say yes to "Init shell (bash)"</li>
+<li>Say yes to "Configure conda-forge"</li>
+<li>For the Prefix Location put "~/.conda", this will store mamba environments in the same location as the notebook service was using. Micromamba will be compaitble with them.</li>
+<li>After micromamba has finished installing you will either need to logout and back in again or refresh your shell by typing <code>source ~/.bashrc</code>. </li>
 </ul>
-<h3 id="getting-the-canari-example-code">Getting the CANARI example code</h3>
-<p>First ensure you are in your home directory by clicking on the folder icon in the file browser on the left side of the screen. </p>
-<p><img alt="Screenshot of the Jupyter home directory icon" src="../assets/jupyter-homefolder.png" /></p>
-<ol>
-<li>Click on the Git menu and choose "Clone a repo" <img alt="Screenshot of the Jupyter Git Menu" src="../assets/jupyter-git-menu.png" /></li>
-<li>Enter https://github.com/CANARI-sprint/tutorials as the URI of the remote Git repository. <img alt="Screenshot of entering the URI" src="../assets/jupyter-git-repo-uri.png" /></li>
-<li>Click Clone</li>
-</ol>
-<p>This will create a copy of the repository from https://github.com/CANARI-sprint/tutorials into your JASMIN home directory.</p>
-<h3 id="open-and-run-an-example-notebook">Open and run an example notebook</h3>
-<ol>
-<li>Click on the tutorials folder that contains your clone of the github repository. </li>
-<li>Open the notebooks folder.</li>
-<li>Choose the 1_basic_manipulation.ipynb notebook </li>
-<li>If you are asked which kernel you would like to use choose the CANARI kernel. <img alt="Jupyter kernel choice screen" src="../assets/jupyter-kernel-choice-2.png" /></li>
-<li>Test the notebook can run by clicking on the Run menu and choosing "Run all cells" or going through each cell one by one and clicking the play button. </li>
-</ol></div>
+<p>At this point you should be able to run the micromamba command as a substitute for any of the mamba/conda commands we've used before. To test this run <code>micromamba env list</code> and you should get a list of all of your environments that you've used on the notebook service. </p>
+<h3 id="activating-the-shared-canari-environment">Activating the shared CANARI environment</h3>
+<p>If you want to run any code in the shared CANARI environment then you need to "activate" that enviroment (or use the micromamba run command). To do this run:
+<code>micromamba activate -p /gws/smf/j04/canari/conda-env</code>
+Your prompt should now change to start with <code>(/gws/smf/j04/canari/conda-env)</code> to indicate that this environment is now active. </p>
+<h3 id="running-a-jupyterlab-instance-on-a-sci-server">Running a JupyterLab instance on a Sci server</h3>
+<p>It is recommended that you use your own copy of CANARI environment for this. If you haven't already made one see the instructions in <a href="/creating_your_own_conda_env/">tutorial 3 - Creating Your Own Conda Enviroment</a>. Assuming you ran this tutorial you should have an environment called <code>canari</code>, go ahead and activate this by running:
+<code>micromamba activate canari</code></p>
+<p>JupyterLab was already started and can be run with the command:
+<code>jupyter-lab</code>
+This will put a lot of text onto the screen, but at the bottom it will say something like:</p>
+<pre><code>   To access the server, open this file in a browser:
+        file:///home/users/colinsau/.local/share/jupyter/runtime/jpserver-27367-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8889/lab?token=cb9017ebaf05fa72769e7136bbfed6373ddf12e5dd9213d7
+        http://127.0.0.1:8889/lab?token=cb9017ebaf05fa72769e7136bbfed6373ddf12e5dd9213d7
+</code></pre>
+<p>The JupyterLab is now running on the sci server you are logged into and listening to requests on port 8889 (your port number might be different, pay attention to this!). But to connect to it we need to open another SSH session. Note that you must leave this SSH session/terminal window open, if you press ctrl+c or close it then the JupyterLab session will stop. To open another SSH session open another terminal and run:</p>
+<p><code>ssh -J &lt;jasminusername&gt;@login1.jasmin.ac.uk -L 8889:localhost:8889 &lt;jasminusername&gt;@sci6</code></p>
+<p>This will bring up a new terminal logged into sci6, but it will also forward requests on your own computer's port 8889 to sci6's port 8889 allowing you to access your Jupyter server on sci6. Now open a web browser and paste in one of the URLs starting "http://" from the output from starting JupyterLab. </p>
+<p><img alt="Screenshot of JupyterLab running on sci6" src="../assets/jupyter-sci-server.png" /></p>
+<h4 id="shutting-down-your-jupyterlab-instance">Shutting down your JupyterLab instance</h4>
+<p>To shutdown your JupyterLab instance press the control key and c at the same time (ctrl+c) in the window where JupyterLab was running. It will ask you <code>Shutdown this Jupyter server (y/[n])?</code> press y and enter and then it will shutdown the JupyterLab instance.</p></div>
             </div>
         </div>
 
