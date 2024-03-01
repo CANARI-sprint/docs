@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Object Store - CANARI Sprint</title>
+        <title>Jasmin notebook service - CANARI Sprint</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -82,20 +82,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#object-store" class="nav-link">Object Store</a>
+            <li class="nav-item" data-level="2"><a href="#tutorial-2-configuring-and-using-the-jasmin-notebooks-service" class="nav-link">Tutorial 2 - Configuring and Using the JASMIN Notebooks Service</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#requirements" class="nav-link">REQUIREMENTS</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#buckets" class="nav-link">BUCKETS</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#file-system" class="nav-link">FILE SYSTEM</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -103,68 +91,36 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="object-store">Object Store</h1>
-<p>This document provides a description of the organization of the Pilot-imfe Tenancy on the Jasmin Object Store. The goal is to facilitate future applications of the same infrastructure in new digital twin or GIS systems projects.</p>
-<h2 id="requirements">REQUIREMENTS</h2>
-<p>For the assembly of an infrastructure for digital twin projects, some system requirements are necessary:
-- The bucket must have open access.
-A significant portion of the data will be made available to the public through the publication of the data's DOI. Therefore, it is important that the public can download most of the data without login issues or the need for registration.</p>
-<ul>
-<li>
-<p>The bucket must have access control for some types of files.
-Depending on the data, the client may request that it has restricted access.</p>
-</li>
-<li>
-<p>The bucket must support versioning.
-Depending on the data format on the frontend, some libraries require that the bucket has version control.</p>
-</li>
-<li>
-<p>File Types
-The bucket must contain all CSV files, COG images, GeoTIFFs, PNGs, JPGs, as well as MBTILES, GEOJSON, SHP, and GEOPARQUET files.</p>
-</li>
-<li>
-<p>The bucket must include the structure and JSON of the STAC catalog.
-The bucket should contain all JSON files related to the catalogs and data of the STAC catalog.</p>
-</li>
-<li>
-<p>The bucket must contain the files used to populate the frontend.
-If the frontend requires images or JSON files to populate the site, they should be stored in the bucket.</p>
-</li>
-</ul>
-<h2 id="buckets">BUCKETS</h2>
-<p>In order to meet all the requirements described above and at the same time align with the space and scalability needs of the project, the following bucket configuration was chosen:</p>
-<ul>
-<li>1 bucket to store open access data without versioning control.</li>
-<li>1 bucket to store data with access control.</li>
-<li>1 bucket with versioning control.</li>
-</ul>
-<p>The three buckets will have the same data organization, which will facilitate interoperability between them. In other words, if a file needs to be accessed in the access-controlled bucket, the data path will be the same as if the file were in the open bucket.</p>
-<h2 id="file-system">FILE SYSTEM</h2>
-<p>The buckets have the following folder organization:</p>
-<pre><code class="language-markdown">├── frontend
-│   ├── images
-│   │   ├── image1.png
-│   ├── layers.json
-│   ├── layers3d.json
-│   ├── website.json
-├── STAC_Catalogue
-│   ├── layer_type1
-│   │   ├── layer1
-│   │   │   ├── layer1.json
-│   │   ├── colection.json
-│   ├── layer_type2
-│   ├── catalog.json
-├── layers
-│   ├── layer_type1
-│   │   ├── layer1
-│   │   │   ├── aditional directiories
-│   │   │   ├── layer1.csv or .tif or .mbtiles or ...
-│   │   ├── layer2
-│   ├── layer_type2
-│   │   ├── layer1
-│   │   ├── layer2
-└── 
-</code></pre></div>
+<h2 id="tutorial-2-configuring-and-using-the-jasmin-notebooks-service">Tutorial 2 - Configuring and Using the JASMIN Notebooks Service</h2>
+<h3 id="logging-into-the-jasmin-notebook-service">Logging into the JASMIN Notebook Service</h3>
+<ol>
+<li>In your web browser visit <a href="https://notebooks.jasmin.ac.uk">https://notebooks.jasmin.ac.uk</a></li>
+<li>Login using your JASMIN username and password</li>
+<li>You will then be emailed a one time code, paste this into the verification code box.</li>
+<li>A Jupyter notebook interface will now be started and you can create a new notebook or open a terminal.</li>
+</ol>
+<p>Your JASMIN home directory and group workspaces will be accessible from within the notebook environment.</p>
+<h3 id="setting-up-the-canari-conda-environment">Setting up the CANARI Conda Environment</h3>
+<p>We have preconfigured a CANARI conda environment for you to use. This contains many (but perhaps not all) of the packages you are likely to need. It is built using the environment.yml file that can be found in the <a href="https://github.com/CANARI-sprint/tutorials/blob/main/environment.yml">CANARI tutorials github</a>. The environment is located on the Group Work Space under the path <code>/gws/smf/j04/canari/conda-env</code>, because it is held in a non-standard location your Jupyter notebooks won't find it automatically. In order to use it do the following:
+* From the Jupyter launcher click on the terminal icon
+* Type: <code>conda run -p /gws/smf/j04/canari/conda-env python -m ipykernel install --user --name CANARI</code> and press enter
+* Open a new Jupyter launcher by clicking on File and then New Launcher
+* There should now be a notebook and console option called CANARI. </p>
+<h3 id="getting-the-canari-example-code">Getting the CANARI example code</h3>
+<ol>
+<li>Click on the Git menu and choose "Clone a repo" <img alt="Screenshot of the Jupyter Git Menu" src="../assets/jupyter-git-menu.png" /></li>
+<li>Enter https://github.com/CANARI-sprint/tutorials as the URI of the remote Git repository. <img alt="Screenshot of entering the URI" src="../assets/jupyter-git-repo-uri.png" /></li>
+<li>Click Clone</li>
+</ol>
+<p>This will create a copy of the repository from https://github.com/CANARI-sprint/tutorials into your JASMIN home directory.</p>
+<h3 id="open-and-run-an-example-notebook">Open and run an example notebook</h3>
+<ol>
+<li>Click on the tutorials folder that contains your clone of the github repository. </li>
+<li>Open the notebooks folder and then the general folder.</li>
+<li>Choose the zarr_files.ipynb notebook </li>
+<li>If you are asked which kernel you would like to use choose the CANARI kernel. <img alt="Jupyter kernel choice screen" src="../assets/jupyter-kernel-choice-2.png" /></li>
+<li>Test the notebook can run by clicking on the Run menu and choosing "Run all cells" or going through each cell one by one and clicking the play button. </li>
+</ol></div>
             </div>
         </div>
 
