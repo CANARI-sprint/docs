@@ -153,7 +153,9 @@ Annual Mean Sea Surface Temperature for 1950 in ensemble member 1</p>
 <h2 id="data-data-access">Data Access</h2>
 <p>To access the CANARI-LE data available on JASMIN you need to apply for access to the CANARI gws through the <a href="https://accounts.jasmin.ac.uk/">JASMIN accounts portal</a> under the my services button.</p>
 <p>An example set of data is currently uploaded onto the CANARI gws (/gws/nopw/j04/canari/users/reinhard/data/u-cy573-sample) and priority variables are in process of being downloaded from tape to JASMIN (/gws/nopw/j04/canari/shared/large-ensemble/priority/HIST2).</p>
-<p>The list of priority variables are on these <a href="https://drive.google.com/drive/folders/12CXfpZdFQDTLTi57ROw3VucY_-nozm-b">spreadsheets</a>.</p>
+<p>The list of priority variables are on this <a href="https://ncas-cms.github.io/canari/metadata/20240229-canari-le-priority-variables.xlsx">spreadsheet</a>.  You can find the long names for the variables and the short names used in the netcdf files.  Please pay particular attention to the notes in red.</p>
+<h2 id="data-useful-files">Useful Files</h2>
+<p>For the ocean the mesh_mask and subbasins files can be found in the CANARI gws here /gws/nopw/j04/canari/shared/large-ensemble/ocean</p>
 <h2 id="data-how-to-cite">How to cite</h2>
 <p>There is no specific paper yet on the large ensemble, so please reference the HadGEM3.1 paper (<a href="https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2017MS001115">Williams et al. 2017</a>) and acknowledge CANARI and JASMIN.</p></section><section class="print-page" id="setup"><h1 id="setup-pre-event">Pre-event</h1>
 <p>This page contains all the pre-event setup required to prepare you to make the most of the event.  New items may appear on the list as the event gets closer.</p>
@@ -233,23 +235,74 @@ Annual Mean Sea Surface Temperature for 1950 in ensemble member 1</p>
 <h2 id="sprint-schedule">Schedule</h2>
 <p>Details subject to change!</p>
 <h2 id="sprint-march-4-2024">March 4, 2024:</h2>
-<p>10:00-10:15: Good morning</p>
-<p>10:15-10:30: Introductions</p>
-<p>10:30-10:45: House Keeping</p>
-<p>10:45-11:15: CANARI-LE overview (Reinhard)</p>
-<p>11:30-12:30: open video chat for help getting onto JASMIN and jupyter notebooks</p>
+<p>9:45: Zoom channel opens for the day</p>
+<p>10:00-10:10: Good morning and Welcome (Jenny Mecking)</p>
+<p>10:10-10:20: Overview of CANARI (Len Shaffrey)</p>
+<p>10:20-10:35: CANARI-LE overview (Reinhard Schiemann)</p>
+<p>10:35-10:40: Event Communication Plans (Ben Harvey)</p>
+<p>10:40-10:45: Research Software Engineer Introduction (Colin Sauze)</p>
+<p>10:45-11:00: Around the Zoom room introductions (Centre Coordinators)</p>
+<p>11:00-11:30: Schedule for the week (Jenny Mecking)</p>
+<p>11:30-12:30: open video chat for help getting onto JASMIN, CANARI gws and jupyter notebooks</p>
 <p>14:00-16:00: guided tutorial of example python scripts</p>
 <p>16:30-17:00:  highlights of the day</p>
 <h2 id="sprint-march-567-2024">March 5,6,7, 2024:</h2>
-<p>10:00-10:30:  Good morning and sharing of known issues and good to knows</p>
+<p>9:45: Zoom channel opens for the day</p>
+<p>10:00-10:30:  Good morning, sharing of known issues and good to knows</p>
 <p>16:30-17:00:  highlights of the day</p>
 <h2 id="sprint-march-8-2024">March 8, 2024:</h2>
-<p>10:00-10:30:  Good morning and sharing of known issues and good to knows</p>
-<p>16:00-17:00:  highlights of the week</p></section><section class="print-page" id="tutorials"><h1 id="tutorials-tutorials">Tutorials</h1>
+<p>9:45: Zoom channel opens for the day</p>
+<p>10:00-10:30:  Good morning, sharing of known issues and good to knows</p>
+<p>16:00-17:00:  highlights of the week</p>
+<h2 id="sprint-useful-links">Useful links</h2>
+<p><a href="https://docs.google.com/spreadsheets/d/1wfX17IQq4rdrSUl1sgKYj2pUmV_pl8qZBRGgCsq_x1U/edit#gid=0">participants list</a></p>
+<p><a href="https://docs.google.com/spreadsheets/d/10T_VkuiszrUwWMmDl8TxcSI5vdEQnf1Z/edit?pli=1#gid=1315481671">list of useful datasets on JASMIN</a></p>
+<p><a href="https://docs.google.com/spreadsheets/d/1SDBcFaH3mWBIVluxx_irPIfmaR9x42rA/edit#gid=1072719862">list of analysis useful to multiple people</a></p>
+<p><a href="https://ncas-cms.github.io/canari/metadata/20240229-canari-le-priority-variables.xlsx">priority variables and variable names</a></p>
+<p>CANARI-LE information</p></section><section class="print-page" id="tutorials"><h1 id="tutorials-tutorials">Tutorials</h1>
 <p>Some simple python tutorials to get you started analysing the CANARI-LE on JASMIN.</p>
-<h2 id="tutorials-tutorial-1">Tutorial 1</h2>
-<p>TBD</p></section><section class="print-page" id="faq"><h1 id="faq-faq">FAQ</h1>
-<p>Questions to come</p></section></div></div>
+<h2 id="tutorials-tutorial-1-configuring-and-using-the-jasmin-notebooks-service">Tutorial 1 - Configuring and Using the JASMIN Notebooks Service</h2>
+<h3 id="tutorials-logging-into-the-jasmin-notebook-service">Logging into the JASMIN Notebook Service</h3>
+<ol>
+<li>In your web browser visit <a href="https://notebooks.jasmin.ac.uk">https://notebooks.jasmin.ac.uk</a></li>
+<li>Login using your JASMIN username and password</li>
+<li>You will then be emailed a one time code, paste this into the verification code box.</li>
+<li>A Jupyter notebook interface will now be started and you can create a new notebook or open a terminal.</li>
+</ol>
+<p>Your JASMIN home directory and group workspaces will be accessible from within the notebook environment.</p>
+<h3 id="tutorials-setting-up-the-canari-conda-environment">Setting up the CANARI Conda Environment</h3>
+<p>We have preconfigured a CANARI conda environment for you to use. This contains many (but perhaps not all) of the packages you are likely to need. It is built using the environment.yml file that can be found in the <a href="https://github.com/CANARI-sprint/tutorials/blob/main/environment.yml">CANARI tutorials github</a>. The environment is located on the Group Work Space under the path <code>/gws/smf/j04/canari/conda-env</code>, because it is held in a non-standard location your Jupyter notebooks won't find it automatically. In order to use it do the following:
+* From the Jupyter launcher click on the terminal icon
+* Type: <code>conda run -p /gws/smf/j04/canari/conda-env -m ipykernel install --user --name CANARI</code> and press enter
+* Open a new Jupyter launcher by clicking on File and then New Launcher
+* There should now be a notebook and console option called CANARI. </p>
+<h3 id="tutorials-getting-the-canari-example-code">Getting the CANARI example code</h3>
+<ol>
+<li>Click on the Git menu and choose "Clone a repo" <img alt="Screenshot of the Jupyter Git Menu" src="../assets/jupyter-git-menu.png" /></li>
+<li>Enter https://github.com/CANARI-sprint/tutorials as the URI of the remote Git repository. <img alt="Screenshot of entering the URI" src="../assets/jupyter-git-repo-uri.png" /></li>
+<li>Click Clone</li>
+</ol>
+<p>This will create a copy of the repository from https://github.com/CANARI-sprint/tutorials into your JASMIN home directory.</p>
+<h3 id="tutorials-open-and-run-an-example-notebook">Open and run an example notebook</h3>
+<ol>
+<li>Click on the tutorials folder that contains your clone of the github repository. </li>
+<li>Open the notebooks folder and then the general folder.</li>
+<li>Choose the zarr_files.ipynb notebook </li>
+<li>If you are asked which kernel you would like to use choose the CANARI kernel. <img alt="Jupyter kernel choice screen" src="../assets/jupyter-kernel-choice-2.png" /></li>
+<li>Test the notebook can run by clicking on the Run menu and choosing "Run all cells" or going through each cell one by one and clicking the play button. </li>
+</ol></section><section class="print-page" id="faq"><h1 id="faq-faq">FAQ</h1>
+<h2 id="faq-slack">Slack</h2>
+<p><strong>How can I access the CANARI Slack workspace?</strong></p>
+<p>The CANARI Slack workspace can be accessed online <a href="http://canariworkspace.slack.com">here</a>.  If you do not yet have an account you can request one by emailing Ben Harvey (b.j.harvey@ncas.ac.uk) or Jenny Mecking (jmecki@noc.ac.uk) directly and they can add you to the CANARI Slack workspace.</p>
+<p><strong>How do I join channels on Slack?</strong></p>
+<p>You can see all the channels which already exist in the CANARI Slack workspace by scrolling to the bottom of the list of channels, just before direct messages and there should be an option '+ Add channels'.  Clicking on '+ Add channels' will bring up 2 options, choose 'Browse Channels' and you will get a list of all the channels and they will all an option to join them when you hover over them.  All channels specific to for the sprint will be labeled 'sprint' and channels specific to ask for help are labeled 'sprint-help'.</p>
+<p><strong>Can I make my own channel on the CANARI Slack workspace for the sprint?</strong></p>
+<p>Everyone is welcome to make their own slack channels to help collaborate during the sprint.  When creating a new channel specifically for the sprint please name it starting with 'sprint-'.</p>
+<h2 id="faq-python">Python</h2>
+<p><strong>Do I have to use python?</strong></p>
+<p>No, you are not required to use python to do analysis during the sprint.  Feel free to use whatever you are familiar with.  However, you are limited by what is available on JASMIN.  The list of what is available on JASMIN can be found <a href="https://help.jasmin.ac.uk/docs/software-on-jasmin/software-overview/">here</a>.</p>
+<p><strong>How can do I access the Jupiter notebook service on JASMIN?</strong></p>
+<p>See Tutorial 1 on the Tutorial page.</p></section></div></div>
             </div>
         </div>
 

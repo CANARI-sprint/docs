@@ -94,7 +94,7 @@
             
             <li class="nav-item" data-level="1"><a href="#tutorials" class="nav-link">Tutorials</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#tutorial-1" class="nav-link">Tutorial 1</a>
+            <li class="nav-item" data-level="2"><a href="#tutorial-1-configuring-and-using-the-jasmin-notebooks-service" class="nav-link">Tutorial 1 - Configuring and Using the JASMIN Notebooks Service</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -107,8 +107,36 @@
 
 <h1 id="tutorials">Tutorials</h1>
 <p>Some simple python tutorials to get you started analysing the CANARI-LE on JASMIN.</p>
-<h2 id="tutorial-1">Tutorial 1</h2>
-<p>TBD</p></div>
+<h2 id="tutorial-1-configuring-and-using-the-jasmin-notebooks-service">Tutorial 1 - Configuring and Using the JASMIN Notebooks Service</h2>
+<h3 id="logging-into-the-jasmin-notebook-service">Logging into the JASMIN Notebook Service</h3>
+<ol>
+<li>In your web browser visit <a href="https://notebooks.jasmin.ac.uk">https://notebooks.jasmin.ac.uk</a></li>
+<li>Login using your JASMIN username and password</li>
+<li>You will then be emailed a one time code, paste this into the verification code box.</li>
+<li>A Jupyter notebook interface will now be started and you can create a new notebook or open a terminal.</li>
+</ol>
+<p>Your JASMIN home directory and group workspaces will be accessible from within the notebook environment.</p>
+<h3 id="setting-up-the-canari-conda-environment">Setting up the CANARI Conda Environment</h3>
+<p>We have preconfigured a CANARI conda environment for you to use. This contains many (but perhaps not all) of the packages you are likely to need. It is built using the environment.yml file that can be found in the <a href="https://github.com/CANARI-sprint/tutorials/blob/main/environment.yml">CANARI tutorials github</a>. The environment is located on the Group Work Space under the path <code>/gws/smf/j04/canari/conda-env</code>, because it is held in a non-standard location your Jupyter notebooks won't find it automatically. In order to use it do the following:
+* From the Jupyter launcher click on the terminal icon
+* Type: <code>conda run -p /gws/smf/j04/canari/conda-env -m ipykernel install --user --name CANARI</code> and press enter
+* Open a new Jupyter launcher by clicking on File and then New Launcher
+* There should now be a notebook and console option called CANARI. </p>
+<h3 id="getting-the-canari-example-code">Getting the CANARI example code</h3>
+<ol>
+<li>Click on the Git menu and choose "Clone a repo" <img alt="Screenshot of the Jupyter Git Menu" src="../assets/jupyter-git-menu.png" /></li>
+<li>Enter https://github.com/CANARI-sprint/tutorials as the URI of the remote Git repository. <img alt="Screenshot of entering the URI" src="../assets/jupyter-git-repo-uri.png" /></li>
+<li>Click Clone</li>
+</ol>
+<p>This will create a copy of the repository from https://github.com/CANARI-sprint/tutorials into your JASMIN home directory.</p>
+<h3 id="open-and-run-an-example-notebook">Open and run an example notebook</h3>
+<ol>
+<li>Click on the tutorials folder that contains your clone of the github repository. </li>
+<li>Open the notebooks folder and then the general folder.</li>
+<li>Choose the zarr_files.ipynb notebook </li>
+<li>If you are asked which kernel you would like to use choose the CANARI kernel. <img alt="Jupyter kernel choice screen" src="../assets/jupyter-kernel-choice-2.png" /></li>
+<li>Test the notebook can run by clicking on the Run menu and choosing "Run all cells" or going through each cell one by one and clicking the play button. </li>
+</ol></div>
             </div>
         </div>
 
