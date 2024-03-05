@@ -102,6 +102,7 @@
 <h1 id="computing-indices-with-cf-python">Computing indices with cf-python</h1>
 <p><a href="https://ncas-cms.github.io/cf-python/">cf-python</a> is a python Earth Science data analysis library that is built on a complete implementation of the CF data model. It makes reading, writing and processing of cf netcdf data very simple. This tutorial points to some basic examples for use on the CANARI SPRINT data on JASMIN</p>
 <p>These examples can all be found in <code>/home/users/dlrhodso/CANARI/SPRINT_2024/examples</code>. All sumbit submit multiple jobs in parallel in order to process all ensemble members at once. They use the <code>LOTUS</code> script to do this - this is a wrapper script for the SLURM submission commands that make it very easy to submit jobs and not worry about log files etc.</p>
+<p>All these scripts use the default JASMIN sci JASPY enviromnet (<code>module load jaspy</code>) - but the <code>LOTUS</code> script automatically loads JASPY.</p>
 <h2 id="computing-a-box-average-nao-index">Computing a box average NAO index</h2>
 <p><code>compute_nao.sh</code> loops over all MSLP files in the <code>/gws/nopw/j04/canari/shared/large-ensemble/priority/HIST2</code> directory and uses the <code>compute_nao.py</code> python script to compute the NAO index.</p>
 <pre><code>#!/usr/bin/env python
