@@ -1,6 +1,8 @@
 # Computing indices with cf-python
 
-[cf-python](https://ncas-cms.github.io/cf-python/) is a python Earth Science data analysis library that is built on a complete implementation of the CF data model. It makes reading, writing and processing of cf netcdf data very simple. This tutorial points to some basic examples for use on the CANARI SPRINT data on JASMIN
+[cf-python](https://ncas-cms.github.io/cf-python/) is a python Earth Science data analysis library that is built on a complete implementation of the CF data model. It makes reading, writing and processing of cf netcdf data very simple. This tutorial points to some basic examples for use on the CANARI SPRINT data on JASMIN.
+
+[These slides](https://docs.google.com/presentation/d/1G2l-9BmeszdsZzRsX1e0o7FX0kP2VKM9WfT-__A5zsY) provide an introduction to cf-python, explaining how it relates to other Python packages, and there are some also general introductory [tutorial ipython notebooks](https://github.com/NCAS-CMS/cf-tools-training/tree/master/new_course).
 
 These examples can all be found in `/home/users/dlrhodso/CANARI/SPRINT_2024/examples`. All sumbit submit multiple jobs in parallel in order to process all ensemble members at once. They use the `LOTUS` script to do this - this is a wrapper script for the SLURM submission commands that make it very easy to submit jobs and not worry about log files etc.
 
