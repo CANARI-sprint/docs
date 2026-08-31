@@ -18,7 +18,7 @@ Land: Jules
 
 40 future projection, SSP3-7.0 (2015-2100) ensemble members 
 
-More information on the CANARI-LE can be found [here](https://ncas-cms.github.io/canari/).
+More information on the CANARI-LE can be found [here](https://ncas-cms.github.io/canari-data/).
 
 ## Data Access
 
